@@ -34,10 +34,10 @@ function (nn::PLSE)(x::AbstractArray, u::AbstractArray)
     res = is_vector ? reshape(_res, 1) : _res
 end
 
-function (nn::PLSE)(x::AbstractArray, u::Convex.AbstractExpr)
-    @unpack T = nn
-    tmp = affine_map(nn, x, u)
-    res = [T * Convex.logsumexp((1/T)*tmp)]
-end
+# function (nn::PLSE)(x::AbstractArray, u::Convex.AbstractExpr)
+#     @unpack T = nn
+#     tmp = affine_map(nn, x, u)
+#     res = [T * Convex.logsumexp((1/T)*tmp)]
+# end
 
 Flux.params(approximator::PLSE) = Flux.params(approximator.NN)

@@ -52,11 +52,11 @@ function (nn::LSE)(z::AbstractArray)
     res = is_vector ? reshape(_res, 1) : _res
 end
 
-function (nn::LSE)(z::Convex.AbstractExpr)
-    @unpack T = nn
-    z_affine = affine_map(nn, z)
-    _res = [T * Convex.logsumexp((1/T)*z_affine)]
-end
+# function (nn::LSE)(z::Convex.AbstractExpr)
+#     @unpack T = nn
+#     z_affine = affine_map(nn, z)
+#     _res = [T * Convex.logsumexp((1/T)*z_affine)]
+# end
 
 """
 Considering bivariate function approximator
@@ -65,6 +65,6 @@ function (nn::LSE)(x::AbstractArray, u::AbstractArray)
     nn(vcat(x, u))
 end
 
-function (nn::LSE)(x::AbstractArray, u::Convex.AbstractExpr)
-    nn(vcat(Convex.Constant(x), u))  # if x is a ComponentArray, vcat(⋅, ⋅) becomes ambiguous
-end
+# function (nn::LSE)(x::AbstractArray, u::Convex.AbstractExpr)
+#     nn(vcat(Convex.Constant(x), u))  # if x is a ComponentArray, vcat(⋅, ⋅) becomes ambiguous
+# end

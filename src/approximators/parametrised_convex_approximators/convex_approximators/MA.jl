@@ -44,10 +44,10 @@ function (nn::MA)(z::Array)
     res = is_vector ? reshape(_res, 1) : _res
 end
 
-function (nn::MA)(z::Convex.AbstractExpr)
-    z_affine = affine_map(nn, z)
-    _res = [maximum(z_affine)]
-end
+# function (nn::MA)(z::Convex.AbstractExpr)
+#     z_affine = affine_map(nn, z)
+#     _res = [maximum(z_affine)]
+# end
 
 """
 Considering bivariate function approximator
@@ -56,6 +56,6 @@ function (nn::MA)(x::AbstractArray, u::AbstractArray)
     nn(vcat(x, u))
 end
 
-function (nn::MA)(x::AbstractArray, u::Convex.AbstractExpr)
-    nn(vcat(Convex.Constant(x), u))
-end
+# function (nn::MA)(x::AbstractArray, u::Convex.AbstractExpr)
+#     nn(vcat(Convex.Constant(x), u))
+# end

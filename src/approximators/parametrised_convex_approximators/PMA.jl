@@ -40,9 +40,9 @@ end
 """
 When receiving Convex.AbstractExpr input
 """
-function (nn::PMA)(x::AbstractArray, u::Convex.AbstractExpr)
-    tmp = affine_map(nn, x, u)
-    res = [maximum(tmp)]
-end
+# function (nn::PMA)(x::AbstractArray, u::Convex.AbstractExpr)
+#     tmp = affine_map(nn, x, u)
+#     res = [maximum(tmp)]
+# end
 
 Flux.params(approximator::PMA) = Flux.params(approximator.NN)

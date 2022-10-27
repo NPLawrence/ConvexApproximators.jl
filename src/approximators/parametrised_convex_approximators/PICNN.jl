@@ -84,12 +84,12 @@ function PICNN_Layer(uin::Int, uout::Int, zin::Int, zout::Int, y::Int, g=Flux.id
 end
 Flux.@functor PICNN_Layer  # make "struct" compatible with Flux
 
-function Flux.relu(x::Convex.AbstractExpr)
-    Convex.pos(x)
-end
-function Flux.leakyrelu(x::Convex.AbstractExpr)
-    Convex.max(x, 0.1*x)
-end
+# function Flux.relu(x::Convex.AbstractExpr)
+#     Convex.pos(x)
+# end
+# function Flux.leakyrelu(x::Convex.AbstractExpr)
+#     Convex.max(x, 0.1*x)
+# end
 function (nn::PICNN_Layer)(input)
     u, z, y = input
     # network params

@@ -15,10 +15,10 @@ function affine_map(nn::ConvexApproximator, z::AbstractArray)
     _α_is * z .+ _β_is
 end
 
-function affine_map(nn::ConvexApproximator, z::Convex.AbstractExpr)
-    @unpack _α_is, _β_is = nn
-    _α_is * z + (_α_is*zeros(size(z)) .+ _β_is)
-end
+# function affine_map(nn::ConvexApproximator, z::Convex.AbstractExpr)
+#     @unpack _α_is, _β_is = nn
+#     _α_is * z + (_α_is*zeros(size(z)) .+ _β_is)
+# end
 
 
 include("MA.jl")
