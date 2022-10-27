@@ -1,3 +1,5 @@
+I have deleted all dependencies on optimization packages (Convex.jl, SCS.jl, etc), so this is a standalone version with just the parameterizations. (SCS.jl wasn't compatible with Apple silicon at the time of writing this.)
+
 # ParametrisedConvexApproximators
 
 [ParametrisedConvexApproximators.jl](https://github.com/JinraeKim/ParametrisedConvexApproximators.jl) is a Julia package providing predefined pararmetrised convex approximators and related functionalities.
