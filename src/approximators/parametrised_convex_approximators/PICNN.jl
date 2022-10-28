@@ -43,9 +43,9 @@ end
 # forward
 function (nn::PICNN)(x, y)
     res = nn.NN((x, y))
-    if typeof(y) <: Convex.AbstractExpr
-        res = [res]  # to make it a vector whose length = 1; consistent with typeof(y) <: AbstractArray
-    end
+    # if typeof(y) <: Convex.AbstractExpr
+    #     res = [res]  # to make it a vector whose length = 1; consistent with typeof(y) <: AbstractArray
+    # end
     return res
 end
 
@@ -98,21 +98,21 @@ function (nn::PICNN_Layer)(input)
     Wy, Wyu, by = nn.Wy, nn.Wyu, nn.by
     Wu, b = nn.Wu, nn.b
     g = nn.g
-    if typeof(y) <: Convex.AbstractExpr
-        u_next = g̃.(W̃*u .+ b̃)
-        z_next = g(
-            Wz * dot(*)(z, max.(Wzu*u .+ bz, 0.0))  # dot(*) is Hadamard product in Convex
-            + Wy * dot(*)(y, (Wyu*u .+ by))
-            + (Wu * u .+ b)
-        )  # broadcasting is not supported by Convex.jl
-    else
-        u_next = g̃.(W̃*u .+ b̃)
-        z_next = g.(
-            Wz * dot(*)(z, max.(Wzu*u .+ bz, 0.0))  # dot(*) is Hadamard product in Convex
-            + Wy * dot(*)(y, (Wyu*u .+ by))
-            + (Wu * u .+ b)
-        )
-    end
+    # if typeof(y) <: Convex.AbstractExpr
+    #     u_next = g̃.(W̃*u .+ b̃)
+    #     z_next = g(
+    #         Wz * dot(*)(z, max.(Wzu*u .+ bz, 0.0))  # dot(*) is Hadamard product in Convex
+    #         + Wy * dot(*)(y, (Wyu*u .+ by))
+    #         + (Wu * u .+ b)
+    #     )  # broadcasting is not supported by Convex.jl
+    # else
+    u_next = g̃.(W̃*u .+ b̃)
+    z_next = g.(
+        Wz * dot(*)(z, max.(Wzu*u .+ bz, 0.0))  # dot(*) is Hadamard product in Convex
+        + Wy * dot(*)(y, (Wyu*u .+ by))
+        + (Wu * u .+ b)
+    )
+    # end
     return u_next, z_next, y
 end
 
