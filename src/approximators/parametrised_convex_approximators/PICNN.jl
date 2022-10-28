@@ -108,8 +108,8 @@ function (nn::PICNN_Layer)(input)
     # else
     u_next = g̃.(W̃*u .+ b̃)
     z_next = g.(
-        Wz * dot(*)(z, max.(Wzu*u .+ bz, 0.0))  # dot(*) is Hadamard product in Convex
-        + Wy * dot(*)(y, (Wyu*u .+ by))
+        Wz * .*(z, max.(Wzu*u .+ bz, 0.0))  # dot(*) is Hadamard product in Convex
+        + Wy * .*(y, (Wyu*u .+ by))
         + (Wu * u .+ b)
     )
     # end
