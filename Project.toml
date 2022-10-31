@@ -1,4 +1,4 @@
-name = "ConvexApproximators"
+name = "ParametrisedConvexApproximators"
 uuid = "0413a9b6-fedb-496c-b419-d7cd56d52ca3"
 authors = ["JinraeKim <kjl950403@gmail.com> and contributors"]
 version = "0.1.1"
