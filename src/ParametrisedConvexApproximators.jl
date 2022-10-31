@@ -1,4 +1,4 @@
-module ConvexApproximators
+module ParametrisedConvexApproximators
 
 using Flux
 using UnPack
@@ -12,7 +12,7 @@ using Random
 # approximators
 export AbstractApproximator, FNN
 export ConvexApproximator, MA, LSE
-export ConvexApproximators, PMA, PLSE
+export ParametrisedConvexApproximators, PMA, PLSE
 export PICNN, project_nonnegative!
 # export optimise, number_of_parameters
 # data manipulation
