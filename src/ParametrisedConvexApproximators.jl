@@ -12,7 +12,7 @@ using Random
 # approximators
 export AbstractApproximator, FNN
 export ConvexApproximator, MA, LSE
-export ParametrisedConvexApproximators, PMA, PLSE
+export ParametrisedConvexApproximator, PMA, PLSE
 export PICNN, project_nonnegative!
 # export optimise, number_of_parameters
 # data manipulation
